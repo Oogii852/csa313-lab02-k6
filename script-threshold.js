@@ -4,7 +4,7 @@ import { sleep, check } from 'k6';
 export const options = {
   vus: 30, duration: "1m",
   thresholds: {
-    http_req_duration: [`p(95)<${__ENV.SLO}`],   // SLO: p95 < SLO мс (baseline p95 x 1.5)
+    http_req_duration: [`p(95)<${__ENV.SLO || 537}`],   // SLO: p95 < SLO мс (baseline p95 x 1.5)
     http_req_failed:   ['rate<0.01'],            // SLO: error rate < 1%
   },
 };
